@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emron Graphical Design</title>
+  <style>
+    :root {
+      --g0: #0f2027; 
+      --g1: #203a43;
+      --g2: #2c5364;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      background: linear-gradient(135deg, var(--g0), var(--g1), var(--g2));
+      background-size: 600% 600%;
+      transition: background 1s ease;
+      overflow-x: hidden;
+    }/* Hamburger button */
+#menu-toggle {
+  position: fixed;
+  top: 20px; right: 20px;
+  width: 36px; height: 30px;
+  cursor: pointer;
+  z-index: 20;
+}
+#menu-toggle span {
+  display: block;
+  height: 4px;
+  margin: 5px 0;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Slide‑in side menu */
+#side-menu {
+  position: fixed;
+  top: 0; right: 0;
+  width: 250px; height: 100%;
+  background: rgba(0,0,0,0.9);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 15;
+  padding-top: 80px;
+}
+#side-menu.open {
+  transform: translateX(0);
+}
+#side-menu ul { list-style: none; padding: 0; margin: 0; text-align: center; }
+#side-menu ul li { margin: 20px 0; }
+#side-menu ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+#side-menu ul li a:hover { color: #ffd700; }
+
+/* WRAPPER holds the canvas + your content */
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  margin-top: 60px;
+}
+.wrapper canvas {
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 0;
+}
+
+/* Header styling */
+header {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 1rem auto;
+  padding: 2.5rem 1.5rem;
+  background: rgba(0,0,0,0.6);
+  border-radius: 0.75rem;
+  text-align: center;
+}
+.logo { font-size: 2.5rem; font-weight: bold; text-shadow: 1px 1px #000; }
+.logo span { color: #FFD700; }
+.tagline { font-size: 1.2rem; margin: 0.5rem 0; }
+.subtagline { font-size: 1rem; margin: 0.75rem 0; font-style: italic; color: #ddd; }
+.location {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  line-height: 1.4;
+  color: #ccc;
+}
+.contact-info {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: #fff;
+}
+
+/* Content & services */
+.content, footer {
+  position: relative; z-index: 1;
+  max-width: 1000px;
+  margin: 1rem auto;
+  padding: 2rem 1rem;
+  background: rgba(0,0,0,0.4);
+  border-radius: 0.5rem;
+  scroll-margin-top: 60px;
+  transition: background 1s ease;
+}
+.highlight { font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; }
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.service {
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, background 1s ease;
+  background: linear-gradient(135deg, #654ea3, #eaafc8);
+  cursor: default;
+}
+.service:hover { transform: scale(1.05); }
+
+/* Footer styling */
+footer { text-align: center; font-size: 1.1rem; margin-bottom: 2rem; }
+footer .location-text { margin-top: 0.5rem; color: #ccc; font-size: 0.9rem; }
+
+  </style>
+</head>
+<body>  <!-- Hamburger button -->  <div id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>  <!-- Slide‑in side menu -->  <nav id="side-menu">
+    <ul>
+      <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+      <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+      <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+    </ul>
+  </nav>  <div class="wrapper">
+    <!-- Animated shapes canvas -->
+    <canvas id="bgCanvas"></canvas><!-- Header -->
+<header id="home">
+  <div class="logo"><span>EMRON</span> Design Hub</div>
+  <div class="tagline">Creative. Professional. Transformative.</div>
+  <div class="subtagline">Premier graphic design & training solutions tailored for excellence.</div>
+  <div class="location">
+    Uganda Martyrs University, Nkozi<br />Mpigi District, Uganda
+  </div>
+  <div class="contact-info">Phone: 0701422100 | Email: emrondesignhub@gmail.com</div>
+</header>
+
+<!-- Services Section -->
+<section class="content" id="services">
+  <div class="highlight">Our Services</div>
+  <p>We bring your ideas to life through top‑tier design and expert training.</p>
+  <div class="services">
+    <div class="service">Logo Design</div>
+    <div class="service">Business Cards</div>
+    <div class="service">Posters & Flyers</div>
+    <div class="service">Social Media Banners</div>
+    <div class="service">Website Mockups</div>
+    <div class="service">UI/UX Design</div>
+    <div class="service">Brand Identity</div>
+    <div class="service">Training Programs</div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+  Call or WhatsApp us today: <strong>0701422100</strong><br />
+  <div class="location-text"><marquee>Uganda Martyrs University, Nkozi, Mpigi District, Uganda</marquee></div>
+</footer>
+
+  </div>  <script>
+    // Toggle side menu + animate hamburger
+    const toggleBtn = document.getElementById('menu-toggle');
+    const sideMenu = document.getElementById('side-menu');
+    toggleBtn.addEventListener('click', toggleMenu);
+    function toggleMenu() {
+      sideMenu.classList.toggle('open');
+      toggleBtn.classList.toggle('open');
+      const [a,b,c] = toggleBtn.querySelectorAll('span');
+      if (sideMenu.classList.contains('open')) {
+        a.style.transform = 'translateY(9px) rotate(45deg)';
+        b.style.opacity   = '0';
+        c.style.transform = 'translateY(-9px) rotate(-45deg)';
+      } else {
+        a.style.transform = '';
+        b.style.opacity   = '';
+        c.style.transform = '';
+      }
+    }
+
+    // Gradient animation
+    const gradients = [
+      ['#0f2027','#203a43','#2c5364'],
+      ['#1a2a6c','#b21f1f','#fdbb2d'],
+      ['#654ea3','#eaafc8','#ff758c'],
+      ['#355c7d','#6c5b7b','#c06c84']
+    ];
+    let gi = 0;
+    (function cycleRootGradient(){
+      const [g0,g1,g2] = gradients[gi % gradients.length];
+      document.documentElement.style.setProperty('--g0', g0);
+      document.documentElement.style.setProperty('--g1', g1);
+      document.documentElement.style.setProperty('--g2', g2);
+      gi++;
+      setTimeout(cycleRootGradient, 5000);
+    })();
+
+    // Floating shapes
+    const wrapper = document.querySelector('.wrapper');
+    const canvas  = document.getElementById('bgCanvas');
+    const ctx     = canvas.getContext('2d');
+    let W, H, shapes = [];
+
+    function resizeCanvas() {
+      canvas.width  = wrapper.clientWidth;
+      canvas.height = wrapper.scrollHeight;
+    }
+    window.addEventListener('load', () => {
+      resizeCanvas(); initShapes(); animate();
+    });
+    window.addEventListener('resize', () => {
+      resizeCanvas(); initShapes();
+    });
+
+    class Shape {
+      constructor(){ this.reset(); }
+      reset(){
+        this.x  = Math.random()*W;
+        this.y  = Math.random()*H;
+        this.vx = (Math.random()-0.5)*0.3;
+        this.vy = (Math.random()-0.5)*0.3;
+        this.r  = 5 + Math.random()*15;
+        this.a  = 0.1 + Math.random()*0.3;
+      }
+      draw(){
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.r,0,2*Math.PI);
+        ctx.fillStyle = `rgba(255,255,255,${this.a})`;
+        ctx.fill();
+      }
+      update(){
+        this.x += this.vx; this.y += this.vy;
+        if(this.x<0||this.x>W||this.y<0||this.y>H) this.reset();
+      }
+    }
+
+    function initShapes() {
+      W = canvas.width; H = canvas.height;
+      shapes = [];
+      const count = Math.floor(H/10);
+      for(let i=0; i<count; i++) shapes.push(new Shape());
+    }
+
+    function animate() {
+      ctx.clearRect(0,0,W,H);
+      shapes.forEach(s => { s.update(); s.draw(); });
+      requestAnimationFrame(animate);
+    }
+  </script></body>
+</html>
